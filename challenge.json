@@ -1,0 +1,11 @@
+{
+  "editable": [
+    "answer.md"
+  ],
+  "exclude": [
+    "challenge.json"
+  ],
+  "readme": {
+    "ja": "README_ja.md"
+  }
+}
