@@ -12,10 +12,13 @@ riot.mixin('form', {
   },
 
   formatErrors: function (e) {
-    if (!(e && e.response && e.response.body && e.response.body.errors)) {
+    if (e && e.response && e.response && e.response.error) {
+      return {global: e.response.error}
+    }
+    if (!(e && e.response && e.response.errors)) {
       return {global: 'An error has occured, please try again later'}
     }
-    const errors = e.response.body.errors
+    const errors = e.response.errors
     const result = {}
     for (const field of Object.keys(errors)) {
       result[field] = `${field} ${errors[field][0]}`

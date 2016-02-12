@@ -22,6 +22,13 @@ class UserService {
     this._currentUser = user
   }
 
+  login(user) {
+    return request.post('/api/login', user).end().then(res => {
+      this.currentUser = res
+      return this.currentUser
+    })
+  }
+
   logout() {
     this.storage.remove('current')
     this._currentUser = null
@@ -32,7 +39,7 @@ class UserService {
   }
 
   signup(user) {
-    return request.post('/api/users', user).end().then((res) => {
+    return request.post('/api/users', user).end().then(res => {
       this.currentUser = res
       return this.currentUser
     })

@@ -13,6 +13,10 @@ defmodule CodecheckSprint.UserView do
     end
   end
 
+  def render("login_error.json", _params) do
+    %{error: "Invalid email or password"}
+  end
+
   def render("full_user.json", %{user: user} = params) do
     Map.merge(render("user.json", params), %{
       email: user.email,

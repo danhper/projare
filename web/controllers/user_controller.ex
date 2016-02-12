@@ -3,6 +3,14 @@ defmodule CodecheckSprint.UserController do
 
   alias CodecheckSprint.User
 
+  def login(conn, %{"email" => email, "password" => password}) do
+    if user = User.authenticate(Repo.get_by(User, email: email), password) do
+      render(conn, "show.json", user: user, full: true)
+    else
+      conn |> put_status(:unauthorized) |> render("login_error.json")
+    end
+  end
+
   def index(conn, _params) do
     users = Repo.all(User)
     render(conn, "index.json", users: users)

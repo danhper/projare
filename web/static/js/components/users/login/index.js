@@ -12,6 +12,7 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
     } else {
       this.currentMode = 'login'
     }
+    this.errors = {}
   }
 
   this.texts = {
@@ -28,7 +29,7 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
   this.processForm = () => {
     const user = this.fetchValues('name', 'email', 'password')
     this.errors = {}
-    userService.signup(user)
+    userService[this.currentMode](user)
       .then((user) => opts.onLogin && opts.onLogin(user))
       .catch(e => this.errors = this.formatErrors(e))
       .finally(() => this.update())
