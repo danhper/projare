@@ -26,14 +26,18 @@ nav.navbar.navbar-default
             span.caret
           ul.dropdown-menu
             li
-              a(href="#") Action
+              a.with-icon(href="/projects/new")
+                i.icon.fa.fa-plus-circle
+                | Create project
             li
               a(href="#") Another action
             li
               a(href="#") Something else here
             li.divider(role="separator")
             li
-              a(href="javascript:void(0)" onclick="{ logout }") Logout
+              a.with-icon(href="javascript:void(0)" onclick="{ logout }")
+                i.icon.fa.fa-sign-out
+                | Logout
               
         li(if="{ !userService.isLoggedIn() }")
           a.login.with-icon(href="javascript:void(0)" onclick="{ login }")

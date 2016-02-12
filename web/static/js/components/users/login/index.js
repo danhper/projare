@@ -6,7 +6,7 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
   this.mixin('form')
 
   this.currentMode = 'login'
-  this.changeMode = () => {
+  this.changeMode = (e) => {
     if (this.currentMode === 'login') {
       this.currentMode = 'signup'
     } else {

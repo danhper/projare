@@ -1,0 +1,15 @@
+.well
+  form.form-horizontal(onsubmit="{ createProject }")
+    fieldset
+      legend Create project
+      .errors.text-danger(if="{ hasError('global') }") { getError('global') }
+      
+      form-row(field="title" label="Title" type="text")
+      form-row(field="url" label="URL" type="url")
+      form-row(field="description" label="Description" type="textarea")
+      
+      .form-group
+        .col-md-2.pull-right
+          button.btn.btn-primary(onclick="{ processForm }")
+            | Create
+            .ripple-container

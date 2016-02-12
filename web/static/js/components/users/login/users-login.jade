@@ -1,25 +1,15 @@
-.form-horizontal
+form.form-horizontal(onsubmit="{ processForm }")
   fieldset
     legend
       | { texts[currentMode].label }
-      button.btn.btn-primary.signup.pull-right(onclick="{ changeMode }")
+      button.btn.btn-primary.signup.pull-right(type="button" onclick="{ changeMode }")
         | { texts[currentMode].link }
     .errors.text-danger(if="{ hasError('global') }") { getError('global') }
-    .form-group(if="{ currentMode === 'signup' }" class="{ 'has-error': hasError('name') }")
-      label.col-md-2.control-label(for="name") Name
-      .col-md-10
-        input.form-control(required name="name" type="text" placeholder="Name")
-        .help-block(if="{hasError('name')}") { getError('name') }
-    .form-group(class="{ 'has-error': hasError('email') }")
-      label.col-md-2.control-label(for="email") Email
-      .col-md-10
-        input.form-control(required name="email" type="email" placeholder="Email")
-        .help-block(if="{hasError('email')}") { getError('email') }
-    .form-group(class="{ 'has-error': hasError('password') }")
-      label.col-md-2.control-label(for="password") Password
-      .col-md-10
-        input.form-control(required name="password" type="password" placeholder="Password")
-        .help-block(if="{hasError('password')}") { getError('password') }
+
+    form-row(if="{ currentMode === 'signup' }" field="name" label="Name" type="text")
+    form-row(field="email" label="Email" type="email")
+    form-row(field="password" label="Password" type="password")
+
     .form-group
       .col-md-3.pull-right
         button.btn.btn-primary(onclick="{ processForm }")
