@@ -1,4 +1,4 @@
-import './events'
+import './projects'
 import './users'
 import './utils'
 

@@ -12,6 +12,7 @@ defmodule CodecheckSprint.Router do
   scope "/api", CodecheckSprint do
     pipe_through :api
 
+    resources "/users", UserController, only: ~w(index show create update)a
     resources "/projects", ProjectController, only: ~w(index show create delete)a
   end
 

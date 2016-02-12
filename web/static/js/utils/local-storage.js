@@ -22,6 +22,10 @@ export default class LocalStorage {
     this.window.localStorage[this._withPrefix(key)] = JSON.stringify(value)
   }
 
+  remove(key) {
+    delete this.window.localStorage[this._withPrefix(key)]
+  }
+
   _withPrefix(key) {
     if (!this.prefix) {
       return key

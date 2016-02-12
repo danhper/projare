@@ -6,7 +6,7 @@ var path              = require('path')
 module.exports = {
   entry: {
     app: './web/static/js/app.js',
-    vendor: ['riot', 'immutable']
+    vendor: ['riot', 'immutable', 'superagent', 'bluebird']
   },
   output: {
     path: './priv/static/js',
@@ -34,7 +34,8 @@ module.exports = {
     'jquery': '$'
   },
   plugins: [
-    new ExtractTextPlugin('[name].css', {allChunks: true})
+    new ExtractTextPlugin('[name].css', {allChunks: true}),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')
   ],
   stylus: {
     use: [nib()]

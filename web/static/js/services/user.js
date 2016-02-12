@@ -1,5 +1,5 @@
 import riot from 'riot'
-import {LocalStorage} from 'utils'
+import {LocalStorage, request} from 'utils'
 
 class UserService {
   constructor() {
@@ -17,8 +17,25 @@ class UserService {
     return this._currentUser
   }
 
+  set currentUser(user) {
+    this.storage.set('current', user)
+    this._currentUser = user
+  }
+
+  logout() {
+    this.storage.remove('current')
+    this._currentUser = null
+  }
+
   isLoggedIn() {
     return this.currentUser !== null
+  }
+
+  signup(user) {
+    return request.post('/api/users', user).end().then((res) => {
+      this.currentUser = res
+      return this.currentUser
+    })
   }
 }
 

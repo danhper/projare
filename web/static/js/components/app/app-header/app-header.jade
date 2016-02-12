@@ -20,8 +20,9 @@ nav.navbar.navbar-default
           span.material-input
       ul.nav.navbar-nav.navbar-right
         li.dropdown(if="{ userService.isLoggedIn() }")
-          a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
-            | Dropdown 
+          a.dropdown-toggle.personal-menu(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+            img.avatar(riot-src="{ userService.currentUser.imageUrl }")
+            | { userService.currentUser.name }
             span.caret
           ul.dropdown-menu
             li
@@ -32,13 +33,13 @@ nav.navbar.navbar-default
               a(href="#") Something else here
             li.divider(role="separator")
             li
-              a(href="#") Separated link
+              a(href="javascript:void(0)" onclick="{ logout }") Logout
               
         li(if="{ !userService.isLoggedIn() }")
-          a.with-icon(href="javascript:void(0)" onclick="{ signIn }")
+          a.login.with-icon(href="javascript:void(0)" onclick="{ login }")
             i.icon.fa.fa-sign-in.fa-2x
             | Login or sign up
 
 utils-modal(name="loginModal" close-button="{ true }")
   #{'yield'}(to="body")
-    users-login
+    users-login(on-login="{ parent.onLogin }")
