@@ -10,8 +10,6 @@ const template = `
 
 riot.tag('app', template, function (opts) {
   this.on('mount', () => {
-    // bootstrap material design once app is mounted
-    $.material.init()
 
     // setup router
     riot.route.start(true)

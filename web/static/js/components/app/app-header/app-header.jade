@@ -38,3 +38,7 @@ nav.navbar.navbar-default
           a.with-icon(href="javascript:void(0)" onclick="{ signIn }")
             i.icon.fa.fa-sign-in.fa-2x
             | Login or sign up
+
+utils-modal(name="loginModal" close-button="{ true }")
+  #{'yield'}(to="body")
+    users-login

@@ -1,0 +1,11 @@
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        #{'yield'}(from="header")
+        button(type="button" class="close" data-dismiss="modal" aria-label="Close" if="{ opts.closeButton }")
+          span(aria-hidden="true") &times;
+      .modal-body
+        #{'yield'}(from="body")
+      .modal-footer
+        #{'yield'}(from="footer")

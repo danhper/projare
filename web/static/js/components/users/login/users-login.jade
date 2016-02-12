@@ -1,0 +1,19 @@
+.form-horizontal
+  fieldset
+    legend
+      | { texts[currentMode].label }
+      button.btn.btn-primary.signup.pull-right(onclick="{ changeMode }")
+        | { texts[currentMode].link }
+    .form-group
+      label.col-md-2.control-label(for="email") Email
+      .col-md-10
+        input.form-control(type="email" placeholder="Email")
+    .form-group
+      label.col-md-2.control-label(for="password") Password
+      .col-md-10
+        input.form-control(type="password" placeholder="Password")
+    .form-group
+      .col-md-3.pull-right
+        button.btn.btn-primary(onclick="{ processForm }")
+          | { texts[currentMode].label }
+          .ripple-container
