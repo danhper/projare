@@ -1,0 +1,40 @@
+nav.navbar.navbar-default
+  .container
+    .navbar-header
+      button.navbar-toggle(type="button" data-toggle="collapse" data-target="#cs-navbar")
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="/")
+        | CodecheckSprint
+        .ripple-container
+    #cs-navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a(href="/") Home
+        li
+          a(href="/categories") Categories
+      form.navbar-form.navbar-left(role="search")
+        .form-group
+          input.form-control.col-sm-8(type="text" placeholder="Search")
+          span.material-input
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown(if="{ userService.isLoggedIn() }")
+          a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false")
+            | Dropdown 
+            span.caret
+          ul.dropdown-menu
+            li
+              a(href="#") Action
+            li
+              a(href="#") Another action
+            li
+              a(href="#") Something else here
+            li.divider(role="separator")
+            li
+              a(href="#") Separated link
+              
+        li(if="{ !userService.isLoggedIn() }")
+          a.with-icon(href="javascript:void(0)" onclick="{ signIn }")
+            i.icon.fa.fa-sign-in.fa-2x
+            | Login or sign up

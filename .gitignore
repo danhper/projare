@@ -1,3 +1,6 @@
 _build/
 deps/
 node_modules/
+priv/static/js
+priv/static/css
+priv/static/components

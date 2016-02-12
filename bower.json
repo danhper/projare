@@ -1,0 +1,7 @@
+{
+  "name": "challenge-portfolio",
+  "dependencies": {
+    "bootstrap-material-design": "^0.5.8",
+    "font-awesome": "^4.5.0"
+  }
+}
