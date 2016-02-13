@@ -1,1 +1,8 @@
 h1.header Projects list
+
+.projects.panel.panel-default(each="{ project in projects }")
+  .panel-heading
+    h3.panel-title
+      a.title(href="/projects/{ project.id }") { project.title }
+      span.author by Daniel
+  .panel-body { project.description }

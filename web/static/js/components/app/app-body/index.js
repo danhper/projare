@@ -10,4 +10,7 @@ riot.tag('app-body', '', '', 'class="container"', function (opts) {
   riot.route('/projects/new', (name) => {
     mountTag(this.root, 'projects-new')
   })
+  riot.route('/projects/*', (id) => {
+    mountTag(this.root, 'projects-show', {id: id})
+  })
 })
