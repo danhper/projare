@@ -10,6 +10,9 @@ defmodule CodecheckSprint.UserController do
       conn |> put_status(:unauthorized) |> render("login_error.json")
     end
   end
+  def login(conn, _params) do
+    send_resp(conn, 400, Poison.encode!(%{"error" => "Please provide your email and password"}))
+  end
 
   def index(conn, _params) do
     users = Repo.all(User)

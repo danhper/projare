@@ -30,6 +30,8 @@ defmodule CodecheckSprint.Web do
     quote do
       use Phoenix.Controller
 
+      import CodecheckSprint.Plug
+
       alias CodecheckSprint.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]

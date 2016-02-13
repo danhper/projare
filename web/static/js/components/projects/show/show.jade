@@ -1,5 +1,17 @@
-.projects-show
+.projects-show(if="{ !loading }")
   h1.header { project.title }
-  h2.sub-header by { project.author.name }
+  h2.sub-header
+    | by
+    img.avatar(riot-src="{ project.author.imageUrl }")
+    a(href="/users/{ project.author.id }") { project.author.name }
   
-  .well.description { project.description }
+  .well
+    .description
+      formatted-text(text="{ project.description }")
+
+    .url.pull-right(if="{ project.url }")
+      | View more at&nbsp;
+      a(href="{ project.url }") { project.url }
+    .clearfix
+
+spinner(if="{ loading }")

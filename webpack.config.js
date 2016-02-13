@@ -17,9 +17,9 @@ module.exports = {
     loaders: [
       {test: /\.json$/, loader: 'json'},
       {test: /\.js$/, loader: 'babel?presets[]=es2015', include: /web\/static\/js/},
+      {test: /\.html$/, loader: 'html'},
       {test: /\.jade$/, loader: 'jade'},
       {test: /\.styl$/, loader: ExtractTextPlugin.extract('style-loader', 'css!stylus')},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
       {test: /\.(png|woff|woff2|eot|ttf|svg|gif)/, loader: 'url-loader?limit=10000'},
       {test: /\.jpg/, loader: 'file-loader'}
     ]

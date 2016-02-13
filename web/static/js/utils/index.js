@@ -1,3 +1,6 @@
 export {default as LocalStorage} from './local-storage'
 export {default as mountTag} from './mount-tag'
 export {default as request} from './request'
+export {default as infiniteScroll} from './infinite-scroll'
+export {default as authorizeRequest} from './authorize-request'
+export {default as notificationManager} from './notification-manager'

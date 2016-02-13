@@ -1,0 +1,4 @@
+.alert.alert-dismissible(role="alert" if="{ message }" class="alert-{ type }")
+  button.close(if="{ !options.noClose }" type="button" aria-label="Close" onclick="{ close }")
+    span(aria-hidden="true") &times;
+  | { message }

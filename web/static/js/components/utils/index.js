@@ -1,2 +1,5 @@
 import './modal'
 import './form-row'
+import './infinite-scroll'
+import './spinner'
+import './formatted-text'

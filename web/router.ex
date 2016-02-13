@@ -7,6 +7,7 @@ defmodule CodecheckSprint.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CodecheckSprint.Plug.FetchUser
   end
 
   scope "/api", CodecheckSprint do

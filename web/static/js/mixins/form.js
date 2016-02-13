@@ -1,6 +1,20 @@
 import riot from 'riot'
 
 riot.mixin('form', {
+  init: function () {
+    this.errors = {}
+    this.on('mount', () => {
+      for (const tag of this.tags['form-row']) {
+        tag.on('change', (field) => {
+          if (delete this.errors[field]) {
+            this.update()
+          }
+        })
+      }
+    })
+  },
+
+
   fetchValues: function (...keys) {
     const result = {}
     for (const key of keys) {

@@ -1,17 +1,17 @@
 .form-group(class="{ 'has-error': parent.hasError(opts.field) }")
   label.col-md-2.control-label(for="{ opts.field }") { opts.label }
   .col-md-10
-    input.form-control(
+    input.input.form-control(
       if="{ opts.type !== 'textarea' }"
       required="{ opts.required }"
       name="{ opts.field }"
       type="{ opts.type }"
       placeholder="{ opts.placeholder || opts.label }"
     )
-    textarea.form-control(
+    textarea.input.form-control(
       if="{ opts.type === 'textarea' }"
       required="{ opts.required }"
       name="{ opts.field }"
       placeholder="{ opts.placeholder || opts.label }"
     )
-    .help-block(if="{hasError(opts.field)}") { parent.getError(opts.field) }
+    .help-block(if="{parent.hasError(opts.field)}") { parent.getError(opts.field) }

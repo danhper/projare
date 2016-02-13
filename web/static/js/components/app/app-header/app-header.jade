@@ -14,9 +14,9 @@ nav.navbar.navbar-default
           a(href="/") Home
         li
           a(href="/categories") Categories
-      form.navbar-form.navbar-left(role="search")
+      form.navbar-form.navbar-left(role="search" onsubmit="{ searchProject }")
         .form-group
-          input.form-control.col-sm-8(type="text" placeholder="Search")
+          input.form-control.col-sm-8(name="search" type="text" placeholder="Search")
           span.material-input
       ul.nav.navbar-nav.navbar-right
         li.dropdown(if="{ userService.isLoggedIn() }")
@@ -30,9 +30,9 @@ nav.navbar.navbar-default
                 i.icon.fa.fa-plus-circle
                 | Create project
             li
-              a(href="#") Another action
-            li
-              a(href="#") Something else here
+              a.with-icon(href="/projects/my")
+                i.icon.fa.fa-file-text
+                | My projects
             li.divider(role="separator")
             li
               a.with-icon(href="javascript:void(0)" onclick="{ logout }")

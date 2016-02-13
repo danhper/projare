@@ -1,8 +1,18 @@
-h1.header Projects list
+h1.header { title }
 
 .projects.panel.panel-default(each="{ project in projects }")
   .panel-heading
     h3.panel-title
       a.title(href="/projects/{ project.id }") { project.title }
-      span.author by Daniel
+      span.author(if="{ parent.opts.authorID }") by { project.author.name }
+      a.author(if="{ !parent.opts.authorID }" href="/users/{ project.author.id }")
+        | by { project.author.name }
   .panel-body { project.description }
+
+.no-projects(if="{ !loading && projects.length === 0 }")
+  span No projects
+  span(if="{ opts.q }") &nbsp; found for search "{ opts.q }"
+  a.back(href="/" if="{ opts.q }") Back to top
+
+
+infinite-scroll(on-infinite="{ loadProjects }" auto-load="{ true }")

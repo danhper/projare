@@ -7,6 +7,8 @@ defmodule CodecheckSprint.User do
     field :email, :string
     field :secret_token, :string
 
+    has_many :projects, CodecheckSprint.Project, foreign_key: :author_id
+
     has_secure_password
 
     timestamps

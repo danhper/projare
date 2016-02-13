@@ -14,6 +14,7 @@ defmodule CodecheckSprint.ProjectView do
       url: project.url,
       title: project.title,
       description: project.description,
-      created_at: project.created_at}
+      created_at: project.created_at,
+      author: render_one(project.author, CodecheckSprint.UserView, "user.json")}
   end
 end

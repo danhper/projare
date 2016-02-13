@@ -1,6 +1,7 @@
 import riot from 'riot'
 
 import {userService} from 'services'
+import {notificationManager} from 'utils'
 
 riot.tag('users-login', require('./users-login.jade')(), function (opts) {
   this.mixin('form')
@@ -30,7 +31,10 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
     const user = this.fetchValues('name', 'email', 'password')
     this.errors = {}
     userService[this.currentMode](user)
-      .then((user) => opts.onLogin && opts.onLogin(user))
+      .then((user) => {
+        notificationManager.notify(`Your are now logged in as ${user.name}`)
+        opts.onLogin && opts.onLogin(user)
+      })
       .catch(e => this.errors = this.formatErrors(e))
       .finally(() => this.update())
   }

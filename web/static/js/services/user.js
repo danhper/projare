@@ -1,5 +1,5 @@
 import riot from 'riot'
-import {LocalStorage, request} from 'utils'
+import {LocalStorage, request, authorizeRequest} from 'utils'
 
 class UserService {
   constructor() {
@@ -11,6 +11,7 @@ class UserService {
 
   _loadCurrentUser() {
     this._currentUser = this.storage.get('current')
+    this._authorize()
   }
 
   get currentUser() {
@@ -20,6 +21,7 @@ class UserService {
   set currentUser(user) {
     this.storage.set('current', user)
     this._currentUser = user
+    this._authorize()
   }
 
   login(user) {
@@ -32,6 +34,8 @@ class UserService {
   logout() {
     this.storage.remove('current')
     this._currentUser = null
+    authorizeRequest(null)
+    riot.route('/')
   }
 
   isLoggedIn() {
@@ -43,6 +47,16 @@ class UserService {
       this.currentUser = res
       return this.currentUser
     })
+  }
+
+  get(id) {
+    return request.get(`/api/users/${id}`).end()
+  }
+
+  _authorize() {
+    if (this._currentUser) {
+      authorizeRequest(this._currentUser.secretToken)
+    }
   }
 }
 
