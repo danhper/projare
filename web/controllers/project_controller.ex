@@ -3,8 +3,8 @@ defmodule CodecheckSprint.ProjectController do
 
   alias CodecheckSprint.Project
 
-  def index(conn, _params) do
-    projects = Repo.all(Project)
+  def index(conn, params) do
+    projects = Project |> Repo.paginate(params)
     render(conn, "index.json", projects: projects)
   end
 
