@@ -5,7 +5,7 @@
   "commaSpace": "always",
   "commentSpace": "always",
   "cssLiteral": "never",
-  "depthLimit": 4,
+  "depthLimit": 5,
   "duplicates": true,
   "efficient": "always",
   "extendPref": false,

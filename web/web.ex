@@ -41,6 +41,13 @@ defmodule CodecheckSprint.Web do
     end
   end
 
+  def service do
+    quote do
+      alias CodecheckSprint.Repo
+    end
+  end
+
+
   def view do
     quote do
       use Phoenix.View, root: "web/templates"

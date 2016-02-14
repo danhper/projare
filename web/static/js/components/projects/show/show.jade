@@ -1,5 +1,13 @@
 .projects-show(if="{ !loading }")
   h1.header.discret-links.ellipsed
+    button.btn.btn-default.btn-raised.btn-sm.stars.with-icon(
+      name="star-button"
+      onclick="{ handleStarProject }"
+      class="{starred: project.starred, disabled: !isLoggedIn()}"
+      title="{ project.starred ? 'Unstar' : 'Star' }"
+    )
+      i.fa.fa-star
+      span { project.starsCount }
     a(href="{ project.url }" target="_blank") { project.title }
   h2.sub-header.discret-links
     .url.ellipsed(if="{ project.url }")

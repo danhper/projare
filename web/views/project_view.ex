@@ -13,6 +13,8 @@ defmodule CodecheckSprint.ProjectView do
     %{id: project.id,
       url: project.url,
       title: project.title,
+      stars_count: project.stars_count,
+      starred: project.starred,
       description: project.description,
       created_at: project.created_at,
       author: render_one(project.author, CodecheckSprint.UserView, "user.json"),

@@ -1,6 +1,23 @@
 .projects-show
   .header
+    position relative
     margin-bottom 10px
+    .stars
+      absolute bottom 0 right 30px
+      cursor pointer
+      &.starred
+        background #bbb
+      @media screen and (max-width: $sm-max-width)
+        position static
+        display block
+        text-align center
+        margin auto
+        padding-top 0
+        padding-bottom 0
+        font-size 0.6em
+        & > *
+          font-size 0.6em
+
   .discret-links
     a
       text-decoration none

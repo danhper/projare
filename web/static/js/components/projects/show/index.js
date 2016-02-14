@@ -5,6 +5,7 @@ import './show.styl'
 import {projectService} from 'services'
 
 riot.tag('projects-show', require('./show.jade')(), function (opts) {
+  this.mixin('star-project', 'auth-helpers')
   this.loading = true
 
   projectService.get(opts.id)
@@ -17,4 +18,9 @@ riot.tag('projects-show', require('./show.jade')(), function (opts) {
       this.loading = false
       this.update()
     })
+
+  this.handleStarProject = () => {
+    this['star-button'].blur()
+    this.starProject(this.project)
+  }
 })

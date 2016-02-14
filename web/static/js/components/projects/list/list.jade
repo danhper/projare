@@ -17,6 +17,10 @@ h1.header { title || 'Projects' }
         a.link.with-icon(if="{ !parent.opts.categoryName }" href="/categories/{ project.category.normalizedName }")
           i(class="{ project.category.icon }")
           span { project.category.name }
+
+      .stars.with-icon(class="{starred: project.starred}")
+        i.fa.fa-star
+        span { project.starsCount }
   .panel-body
     markdown.small(content="{ project }" key="description" limit="{ 300 }")
 

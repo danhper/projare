@@ -3,6 +3,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var nib               = require('nib')
 var path              = require('path')
 
+var stylusImports = 'import[]=' + path.join(__dirname, './web/static/css/variables.styl')
+  + '&import[]=~nib/index.styl'
+
 module.exports = {
   entry: {
     app: './web/static/js/app.js',
@@ -29,7 +32,8 @@ module.exports = {
       {test: /\.js$/, loader: 'babel?presets[]=es2015', include: /web\/static\/js/},
       {test: /\.html$/, loader: 'html'},
       {test: /\.jade$/, loader: 'jade'},
-      {test: /\.styl$/, loader: ExtractTextPlugin.extract('style-loader', 'css!stylus')},
+      {test: /\.styl$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css!stylus?' + stylusImports)},
       {test: /\.(png|woff|woff2|eot|ttf|svg|gif)/, loader: 'url-loader?limit=10000'},
       {test: /\.jpg/, loader: 'file-loader'}
     ]

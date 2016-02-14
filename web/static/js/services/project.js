@@ -20,6 +20,14 @@ class ProjectService {
   get(id) {
     return request.get(`/api/projects/${id}`).end()
   }
+
+  star(id) {
+    return request.post(`/api/projects/${id}/star`).end()
+  }
+
+  unstar(id) {
+    return request.del(`/api/projects/${id}/star`).end()
+  }
 }
 
 export default new ProjectService()

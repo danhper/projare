@@ -1,14 +1,17 @@
 .projects
   .panel-title
+    position relative
     font-size 2em
     .title
       max-width 100%
-      color #009688
+      color $primary-color
     .author
       max-width 100%
       display inline-block
       margin-left 10px
       font-size 0.7em
+      @media screen and (max-width: $sm-max-width)
+        display block
     .category
       display inline-block
       margin-left 10px
