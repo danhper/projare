@@ -6,10 +6,16 @@
       
       form-row(field="title" label="Title" type="text")
       form-row(field="url" label="URL" type="url")
-      form-row(field="description" label="Description" type="textarea")
+      form-row(field="category_id" label="Category" type="select" value="1")
+        #{'yield'}(to="select")
+          option(each="{ category in parent.categories }" value="{ category.id }")
+            | { category.name }
+      form-row(field="description" label="Description" type="textarea" help="You can use Markdown")
       
       .form-group
         .col-md-2.pull-right
-          button.btn.btn-primary(onclick="{ createProject }")
+          button.btn.btn-primary(if="{ !loading }" onclick="{ createProject }")
             | Create
             .ripple-container
+          button.spin.btn.btn-primary.disabled(type="button" if="{ loading }")
+            spinner.inline(size="{ 36 }")

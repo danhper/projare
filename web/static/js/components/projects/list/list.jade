@@ -1,18 +1,31 @@
-h1.header { title }
+h1.header { title || 'Projects' }
 
 .projects.panel.panel-default(each="{ project in projects }")
   .panel-heading
-    h3.panel-title
-      a.title(href="/projects/{ project.id }") { project.title }
-      span.author(if="{ parent.opts.authorID }") by { project.author.name }
-      a.author(if="{ !parent.opts.authorID }" href="/users/{ project.author.id }")
-        | by { project.author.name }
-  .panel-body { project.description }
+    h1.panel-title
+      a.title.ellipsed(href="/projects/{ project.id }") { project.title }
+      .author
+        | by&nbsp;
+        span.ellipsed(if="{ parent.opts.authorID }") { project.author.name }
+        a.ellipsed(if="{ !parent.opts.authorID }" href="/users/{ project.author.id }")
+          | { project.author.name }
+      .category
+        | in
+        span.with-icon(if="{ parent.opts.categoryName }")
+          i(class="{ project.category.icon }")
+          span { project.category.name }
+        a.link.with-icon(if="{ !parent.opts.categoryName }" href="/categories/{ project.category.normalizedName }")
+          i(class="{ project.category.icon }")
+          span { project.category.name }
+  .panel-body
+    markdown.small(content="{ project }" key="description" limit="{ 300 }")
+
+    .view-more.pull-right
+      a(href="/projects/{ project.id }") View more >>
 
 .no-projects(if="{ !loading && projects.length === 0 }")
   span No projects
   span(if="{ opts.q }") &nbsp; found for search "{ opts.q }"
   a.back(href="/" if="{ opts.q }") Back to top
-
 
 infinite-scroll(on-infinite="{ loadProjects }" auto-load="{ true }")

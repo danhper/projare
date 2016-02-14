@@ -15,6 +15,7 @@ defmodule CodecheckSprint.ProjectView do
       title: project.title,
       description: project.description,
       created_at: project.created_at,
-      author: render_one(project.author, CodecheckSprint.UserView, "user.json")}
+      author: render_one(project.author, CodecheckSprint.UserView, "user.json"),
+      category: render_one(project.category, CodecheckSprint.CategoryView, "category.json")}
   end
 end

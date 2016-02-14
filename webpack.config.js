@@ -6,7 +6,17 @@ var path              = require('path')
 module.exports = {
   entry: {
     app: './web/static/js/app.js',
-    vendor: ['riot', 'immutable', 'superagent', 'bluebird']
+    vendor: [
+      'riot',
+      'immutable',
+      'superagent',
+      'bluebird',
+      'marked',
+      'superagent-promise',
+      'superagent-serializer',
+      'lodash.escape',
+      'lodash.find'
+    ]
   },
   output: {
     path: './priv/static/js',

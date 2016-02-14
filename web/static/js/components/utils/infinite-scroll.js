@@ -26,9 +26,18 @@ riot.tag('infinite-scroll', template, function (opts) {
     opts.onInfinite().finally(() => end(done))
   }
 
-  infiniteScroll({
-    distance: opts.distance || 50,
-    callback: callback
+  let disableScroll = null
+
+  this.on('mount', () => {
+    disableScroll = infiniteScroll({
+      distance: opts.distance || 50,
+      callback: callback
+    })
+  })
+  this.on('unmount', () => {
+    if (disableScroll) {
+      disableScroll()
+    }
   })
 
   if (opts.autoLoad) {

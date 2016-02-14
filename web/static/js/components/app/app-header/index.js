@@ -32,5 +32,7 @@ riot.tag('app-header', require('./app-header.jade')(), function (opts) {
 
   this.on('update', () => {
     this.search.value = riot.route.query().q || ''
+    $(this.root.querySelector('.navbar-collapse')).collapse('hide')
+    this.path = window.location.pathname
   })
 })

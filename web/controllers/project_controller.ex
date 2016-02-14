@@ -10,7 +10,8 @@ defmodule CodecheckSprint.ProjectController do
               |> Project.with_word(params["q"])
               |> Project.order(params["reversed"])
               |> Project.for_author(params["author_id"])
-              |> Project.preload_author
+              |> Project.for_category(params["category_name"])
+              |> Project.with_preloads
               |> Repo.paginate(params)
     render(conn, "index.json", projects: projects)
   end
@@ -21,7 +22,7 @@ defmodule CodecheckSprint.ProjectController do
 
     case Repo.insert(changeset) do
       {:ok, project} ->
-        conn |> render("show.json", project: Repo.preload(project, :author))
+        conn |> render("show.json", project: Repo.preload(project, [:author, :category]))
       {:error, changeset} ->
         conn
         |> put_status(:bad_request)
@@ -30,7 +31,7 @@ defmodule CodecheckSprint.ProjectController do
   end
 
   def show(conn, %{"id" => id}) do
-    project = Repo.get!(Project, id) |> Repo.preload(:author)
+    project = Repo.get!(Project, id) |> Repo.preload([:author, :category])
     render(conn, "show.json", project: project)
   end
 

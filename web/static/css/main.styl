@@ -1,13 +1,37 @@
 .with-icon
+  &.primary-color
+    color #009688
+  &.link
+    text-decoration none
+    &:hover
+      opacity 0.8
   .icon
     font-size 1.3em
-    margin-right 10px
+    margin-right 8px
     vertical-align middle
+  span
+    vertical-align middle
+
+.btn.spin
+  padding-top 0
+  padding-bottom 0
+  max-height 36px
+
+.ellipsed
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+  max-width 100%
+a.ellipsed, span.ellipsed
+  display inline-block
+  vertical-align middle
 
 .header
   text-align center
-  color #009688
+  color #333333
   font-size 42px
+  min-height 46px
+  margin-bottom 30px
 
 .sub-header
   text-align center

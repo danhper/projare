@@ -2,8 +2,9 @@
   label.col-md-2.control-label(for="{ opts.field }") { opts.label }
   .col-md-10
     input.input.form-control(
-      if="{ opts.type !== 'textarea' }"
+      if="{ opts.type !== 'textarea' && opts.type !== 'select' }"
       required="{ opts.required }"
+      value="{ opts.value }"
       name="{ opts.field }"
       type="{ opts.type }"
       placeholder="{ opts.placeholder || opts.label }"
@@ -11,7 +12,17 @@
     textarea.input.form-control(
       if="{ opts.type === 'textarea' }"
       required="{ opts.required }"
+      value="{ opts.value }"
       name="{ opts.field }"
       placeholder="{ opts.placeholder || opts.label }"
     )
-    .help-block(if="{parent.hasError(opts.field)}") { parent.getError(opts.field) }
+    select.input.form-control(
+      if="{ opts.type === 'select' }"
+      required="{ opts.required }"
+      value="{ opts.value || '-1' }"
+      placeholder="{ opts.placeholder || opts.label }"
+      name="{ opts.field }"
+    )
+      #{'yield'}(from="select")
+    .help-block(if="{ opts.help && !parent.hasError(opts.field) }") { opts.help }
+    .help-block(if="{ parent.hasError(opts.field) }") { parent.getError(opts.field) }

@@ -28,6 +28,7 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
   }
 
   this.processForm = () => {
+    this.loading = true
     const user = this.fetchValues('name', 'email', 'password')
     this.errors = {}
     userService[this.currentMode](user)
@@ -36,6 +37,9 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
         opts.onLogin && opts.onLogin(user)
       })
       .catch(e => this.errors = this.formatErrors(e))
-      .finally(() => this.update())
+      .finally(() => {
+        this.loading = false
+        this.update()
+      })
   }
 })

@@ -1,4 +1,5 @@
 import riot from 'riot'
+import Promise from 'bluebird'
 
 import './list.styl'
 
@@ -16,6 +17,7 @@ riot.tag('projects-list', require('./list.jade')(), function (opts) {
       offset: this.projects.length,
       q: opts.q,
       author_id: opts.authorID,
+      category_name: opts.categoryName,
       reversed: true
     }
     this.loading = true
@@ -25,27 +27,7 @@ riot.tag('projects-list', require('./list.jade')(), function (opts) {
       .finally(end)
   }
 
-  const titleForUser = () => {
-    return userService.get(opts.authorID)
-    .then((user) => `Projects by ${user.name}`)
-    .catch(() => {
-      notificationManager.notify('Could not find user', 'danger')
-      riot.route('/')
-    })
-  }
-
-  const getTitle = () => {
-    if (opts.authorID) {
-      if (userService.isLoggedIn() && opts.authorID === userService.currentUser.id) {
-        return Promise.resolve('My projects')
-      }
-      return titleForUser()
-    } else {
-      return Promise.resolve(opts.q ? `Project search for "${opts.q}"` : 'Recent projects')
-    }
-  }
-
-  getTitle().then((title) => {
+  opts.title.then((title) => {
     this.title = title
     this.update()
   })

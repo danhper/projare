@@ -22,6 +22,8 @@ defmodule CodecheckSprint.User do
     |> cast(params, @required_fields, @optional_fields)
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/.+@[^\.]+.*/)
+    |> validate_length(:name, max: 40)
+    |> validate_length(:email, max: 100)
     |> with_secure_password(min_length: 6)
     |> prepare_changes(&generate_secret_token/1)
     |> unique_constraint(:secret_token)

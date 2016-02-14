@@ -1,17 +1,20 @@
 .projects-show(if="{ !loading }")
-  h1.header { project.title }
-  h2.sub-header
-    | by
-    img.avatar(riot-src="{ project.author.imageUrl }")
-    a(href="/users/{ project.author.id }") { project.author.name }
-  
+  h1.header.discret-links.ellipsed
+    a(href="{ project.url }" target="_blank") { project.title }
+  h2.sub-header.discret-links
+    .url.ellipsed(if="{ project.url }")
+      a(href="{ project.url }" target="_blank") { project.url }
+    .author.ellipsed
+      a(href="/users/{ project.author.id }")
+        img.avatar(riot-src="{ project.author.imageUrl }")
+      a(href="/users/{ project.author.id }") { project.author.name }
+    .category
+      a.with-icon.primary-color.link(href="/categories/{ project.category.normalizedName }")
+        i.icon(class="{ project.category.icon }")
+        span { project.category.name }
+
   .well
     .description
-      formatted-text(text="{ project.description }")
-
-    .url.pull-right(if="{ project.url }")
-      | View more at&nbsp;
-      a(href="{ project.url }") { project.url }
-    .clearfix
+      markdown(content="{ project }" key="description")
 
 spinner(if="{ loading }")

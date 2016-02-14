@@ -32,6 +32,11 @@ export default function(options) {
   document.ontouchmove = function(event) {
     handleScroll(scroller, event);
   }
+
+  return function () {
+    window.onscroll = null
+    document.ontouchmove = null
+  };
 }
 
 function getScrollPos() {

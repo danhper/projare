@@ -12,6 +12,8 @@ form.form-horizontal(onsubmit="{ processForm }")
 
     .form-group
       .col-md-3.pull-right
-        button.btn.btn-primary(onclick="{ processForm }")
+        button.btn.btn-primary(onclick="{ processForm }" if="{ !loading }")
           | { texts[currentMode].label }
           .ripple-container
+        button.btn.btn-primary.disabled.spin(type="button" if="{ loading }")
+          spinner.inline(size="{ 36 }")
