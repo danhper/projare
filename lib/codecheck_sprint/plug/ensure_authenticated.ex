@@ -1,20 +1,13 @@
 defmodule CodecheckSprint.Plug.EnsureAuthenticated do
   @behaviour Plug
 
-  import Plug.Conn
+  def init(_opts), do: []
 
-  def init(_opts) do
-    []
-  end
-
-  def call(conn, _params) do
+  def call(conn, _opts) do
     if CodecheckSprint.Plug.signed_in?(conn) do
       conn
     else
-      conn
-      |> put_resp_header("Content-Type", "application/json")
-      |> send_resp(401, Poison.encode!(%{"error" => "not authenticated"}))
-      |> halt
+      CodecheckSprint.Plug.halt_with_error(conn, 401, "not authenticated")
     end
   end
 end

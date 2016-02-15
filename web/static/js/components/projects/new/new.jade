@@ -1,21 +1,33 @@
-.well
-  form.form-horizontal(onsubmit="{ createProject }")
+.well.with-margin
+  form.form-horizontal(if="{ !loading }" onsubmit="{ saveProject }")
     fieldset
-      legend Create project
+      legend { opts.title }
       .errors.text-danger(if="{ hasError('global') }") { getError('global') }
       
-      form-row(field="title" label="Title" type="text")
-      form-row(field="url" label="URL" type="url")
-      form-row(field="category_id" label="Category" type="select" value="1")
+      form-row(field="title" label="Title" type="text" value="{ project.title }")
+      form-row(field="url" label="URL" type="url" value="{ project.url }")
+      form-row(field="category_id" label="Category" type="select" value="{ project.category.id || 1 }")
         #{'yield'}(to="select")
-          option(each="{ category in parent.categories }" value="{ category.id }")
+          option(
+            each="{ category in parent.categories }"
+            value="{ category.id }"
+            __selected="{ project.category.id == category.id }"
+          )
             | { category.name }
-      form-row(field="description" label="Description" type="textarea" help="You can use Markdown")
+      form-row#description(
+        field="description"
+        label="Description"
+        type="textarea"
+        value="{ project.description }"
+        help="You can use Markdown"
+      )
       
       .form-group
         .col-md-2.pull-right
-          button.btn.btn-primary(if="{ !loading }" onclick="{ createProject }")
-            | Create
+          button.btn.btn-primary(if="{ !saving }" onclick="{ saveProject }")
+            | { opts.buttonText }
             .ripple-container
-          button.spin.btn.btn-primary.disabled(type="button" if="{ loading }")
+          button.spin.btn.btn-primary.disabled(type="button" if="{ saving }")
             spinner.inline(size="{ 36 }")
+
+  spinner(if="{ loading }")

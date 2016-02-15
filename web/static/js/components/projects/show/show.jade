@@ -20,6 +20,15 @@
       a.with-icon.primary-color.link(href="/categories/{ project.category.normalizedName }")
         i.icon(class="{ project.category.icon }")
         span { project.category.name }
+    .actions(if="{ project.author.id === currentUser().id }")
+      a.edit.btn.btn-xs.btn-default.btn-raised(href="/projects/{ project.id }/edit") Edit
+      button.delete.btn.btn-xs.btn-danger.btn-raised(
+        name="delete-button"
+        onclick="{ handleDeleteProject }"
+        class="{disabled: deleting}"
+      )
+        span(if="{ !deleting }") Delete
+        spinner.inline(if="{ deleting }" size="{ 26 }" color="#fff")
 
   .well
     .description

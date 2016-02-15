@@ -10,7 +10,7 @@ defmodule CodecheckSprint.Plug.FetchUser do
     []
   end
 
-  def call(conn, _params) do
+  def call(conn, _opts) do
     case fetch_user(get_req_header(conn, "authorization")) do
       %User{} = user -> assign(conn, :current_user, user)
       _              -> conn

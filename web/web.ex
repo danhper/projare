@@ -38,6 +38,10 @@ defmodule CodecheckSprint.Web do
 
       import CodecheckSprint.Router.Helpers
       import CodecheckSprint.Gettext
+
+      alias CodecheckSprint.Plug.FetchResource
+      alias CodecheckSprint.Plug.EnsureAuthenticated
+      alias CodecheckSprint.Plug.EnsureAuthorized
     end
   end
 

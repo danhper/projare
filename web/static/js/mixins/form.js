@@ -17,23 +17,24 @@ riot.mixin('form', {
     })
   },
 
-
   fetchValues: function (...keys) {
     const result = {}
     for (const key of keys) {
-      if (this[key] && this[key].value) {
-        result[key] = this[key].value
-        continue
-      }
-      for (const tag of this.tags['form-row']) {
-        const val = tag.inputValue && tag.inputValue(key)
-        if (val) {
-          result[key] = val
-          continue
-        }
-      }
+      result[key] = this.fetchValue(key)
     }
     return result
+  },
+
+  fetchValue: function (key) {
+    for (const tag of this.tags['form-row']) {
+      const val = tag.inputValue && tag.inputValue(key)
+      if (val) {
+        return val
+      }
+    }
+    if (this[key] && this[key].value) {
+      return this[key].value
+    }
   },
 
   formatErrors: function (e) {

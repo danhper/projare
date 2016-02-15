@@ -6,7 +6,10 @@ class ProjectService {
     riot.observable(this)
   }
 
-  create(project) {
+  save(project) {
+    if (project.id) {
+      return request.put(`/api/projects/${project.id}`, project).end()
+    }
     return request.post('/api/projects', project).end()
   }
 
@@ -27,6 +30,10 @@ class ProjectService {
 
   unstar(id) {
     return request.del(`/api/projects/${id}/star`).end()
+  }
+
+  delete(id) {
+    return request.del(`/api/projects/${id}`).end()
   }
 }
 

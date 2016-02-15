@@ -8,14 +8,20 @@ riot.tag('form-row', require('./form-row.jade')(), function (opts) {
     const input = this.root.querySelector('.input')
     input.addEventListener('keyup', () => this.trigger('change', opts.field))
     input.addEventListener('change', () => this.trigger('change', opts.field))
+    if (opts.type === 'textarea') {
+      this.textarea = this.root.querySelector('textarea')
+      autosize(this.textarea)
+    }
   })
 
   this.on('updated', () => {
-    if (opts.type === 'textarea') {
-      autosize(this.root.querySelector('textarea'))
+    if (opts.type === 'textarea' && this.textarea) {
+      const evt = document.createEvent('Event')
+      evt.initEvent('autosize:update', true, false)
+      this.textarea.dispatchEvent(evt)
     }
     if (opts.type === 'select') {
-      $(this.root.querySelector('select')).dropdown({optionClass: 'withripple'})
+      // $(this.root.querySelector('select')).dropdown({optionClass: 'withripple'})
     }
   })
 

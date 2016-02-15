@@ -7,9 +7,9 @@ defmodule CodecheckSprint.Project do
     field :url, :string
     field :title, :string
     field :description, :string
-    field :stars_count, :integer
+    field :stars_count, :integer, default: 0
 
-    field :starred, :boolean, virtual: true
+    field :starred, :boolean, virtual: true, default: false
 
     belongs_to :author, CodecheckSprint.User
     belongs_to :category, CodecheckSprint.Category
@@ -33,6 +33,15 @@ defmodule CodecheckSprint.Project do
     model
     |> cast(params, ~w(stars_count), [])
     |> validate_number(:stars_count, greater_than_or_equal_to: 0)
+  end
+
+  def for_params(query, params) when is_map(params) do
+    query
+    |> with_word(params["q"])
+    |> order(params["reversed"])
+    |> for_author(params["author_id"])
+    |> for_category(params["category_name"])
+    |> with_preloads
   end
 
   def for_category(query, name) when is_binary(name) do

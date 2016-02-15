@@ -18,11 +18,25 @@ riot.tag('app-body', '', '', 'class="container"', function (opts) {
     mountTag(this.root, 'projects-list', {title: Promise.resolve('Recent projects')})
   })
 
-  riot.route('/projects/new', (name) => {
-    mountTag(this.root, 'projects-new')
+  riot.route('/projects/new', () => {
+    mountTag(this.root, 'projects-new', {
+      title: 'Create project',
+      buttonText: 'Create'
+    })
   })
 
-  riot.route('/projects/my', (id) => {
+  riot.route('/projects/*/edit', (id) => {
+    if (!userService.isLoggedIn()) {
+      return errorAndRedirect('You must login to see this page')()
+    }
+    mountTag(this.root, 'projects-new', {
+      projectID: id,
+      title: 'Edit project',
+      buttonText: 'Save'
+    })
+  })
+
+  riot.route('/projects/my', () => {
     if (!userService.isLoggedIn()) {
       return errorAndRedirect('You must login to see this page')()
     }

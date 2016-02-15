@@ -17,7 +17,7 @@ defmodule CodecheckSprint.Router do
     resources "/users", UserController, only: ~w(index show create update)a
     get "/categories", CategoryController, :index
 
-    resources "/projects", ProjectController, only: ~w(index show create delete)a
+    resources "/projects", ProjectController, only: ~w(index show create update delete)a
     post "/projects/:id/star", ProjectController, :star
     delete "/projects/:id/star", ProjectController, :unstar
   end
