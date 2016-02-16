@@ -1,10 +1,10 @@
 h1.header Categories
 
 .categories.row
-  a.category.panel.panel-default.col-md-3.col-xs-8.col-xs-offset-2(
+  a.category.panel.panel-default.col-md-3.col-xs-5(
     each="{ category, i in categories }"
     href="/categories/{ category.normalizedName }"
-    class="{'col-md-offset-1': i % 3 !== 0, 'col-md-offset-0': i % 3 === 0}"
+    class="{'col-md-offset-1': i % 3 !== 0, 'col-md-offset-0': i % 3 === 0, 'col-xs-offset-1': i % 2 === 1}"
   )
     .panel-body
       i.colored.main-icon(class="{ category.icon }")

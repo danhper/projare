@@ -1,6 +1,11 @@
 .categories
   text-align center
   .category
+    @media screen and (max-width: $sm-max-width)
+      &:nth-child(2n + 1)
+        margin-left 10px
+      .main-icon
+        font-size 6em
     text-decoration none
     &:hover
       opacity 0.8
