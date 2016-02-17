@@ -18,7 +18,8 @@ riot.tag('projects-list', require('./list.jade')(), function (opts) {
       q: opts.q,
       author_id: opts.authorID,
       category_name: opts.categoryName,
-      reversed: true
+      reversed: !opts.ranking,
+      ranking: opts.ranking
     }
     this.loading = true
     return projectService.list(query)

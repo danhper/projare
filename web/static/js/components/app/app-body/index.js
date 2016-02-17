@@ -25,6 +25,13 @@ riot.tag('app-body', '', '', 'class="container"', function (opts) {
     })
   })
 
+  riot.route('/projects/ranking', () => {
+    mountTag(this.root, 'projects-list', {
+      title: Promise.resolve('Popular projects'),
+      ranking: true
+    })
+  })
+
   riot.route('/projects/*/edit', (id) => {
     if (!userService.isLoggedIn()) {
       return errorAndRedirect('You must login to see this page')()

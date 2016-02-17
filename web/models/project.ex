@@ -38,7 +38,8 @@ defmodule CodecheckSprint.Project do
   def for_params(query, params) when is_map(params) do
     query
     |> with_word(params["q"])
-    |> order(params["reversed"])
+    |> reverse_order(params["reversed"])
+    |> ranking_order(params["ranking"])
     |> for_author(params["author_id"])
     |> for_category(params["category_name"])
     |> with_preloads
@@ -66,7 +67,11 @@ defmodule CodecheckSprint.Project do
       where: ilike(p.title, ^("%#{word}%")) or ilike(p.description, ^("%#{word}%"))
   end
 
-  def order(query, reversed) when reversed == true or reversed == "true",
+  def ranking_order(query, ranking) when ranking == true or ranking == "true",
+    do: from p in query, order_by: [desc: p.stars_count]
+  def ranking_order(query, _), do: query
+
+  def reverse_order(query, reversed) when reversed == true or reversed == "true",
     do: from p in query, order_by: [desc: p.created_at]
-  def order(query, _), do: query
+  def reverse_order(query, _), do: query
 end
