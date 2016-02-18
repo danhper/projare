@@ -1,0 +1,23 @@
+spinner(if="{ loading }" size="{ 50 }")
+.comments.panel.panel-default(if="{ !loading }")
+  .panel-heading
+    span(if="{ count }") { count } comment{ count > 1 ? 's' : '' }
+    span(if="{ !count }") Comments
+  .panel-body
+    comments-comment(
+      each="{ comment, index in comments }"
+      service="{ commentService }"
+      comment="{ comment }"
+      index="{ index }"
+      on-deleted="{ parent.handleDelete }"
+    )
+    .no-comments(if="{ comments.length === 0 }")
+      | No comments yet!
+    form.leave-comment.text-center(if="{ isLoggedIn() }" onsubmit="{ handleSave }")
+      textarea.form-control(name="body" placeholder="Leave a comment...")
+      .submit.text-right
+        input.btn.btn-primary.btn-small(type="submit" value="Save" disabled="{ saving }")
+    .please-login.text-center(if="{ !isLoggedIn() }")
+      | You must login to post a comment
+      
+infinite-scroll(on-infinite="{ loadComments }")

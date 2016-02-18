@@ -4,8 +4,12 @@ import escape from 'lodash.escape'
 
 riot.tag('formatted-text', '', function (opts) {
   this.on('update', () => {
-    opts.text = escape(opts.text || '')
-    this.root.innerHTML = opts.text.replace(/\n/g, '<br>')
+    if (!opts.content) {
+      return
+    }
+    let text = opts.key ? opts.content[opts.key] : opts.content
+    text = escape(text || '')
+    this.root.innerHTML = text.replace(/\n/g, '<br>')
     this.update()
   })
 })

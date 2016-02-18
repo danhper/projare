@@ -34,4 +34,6 @@
     .description
       markdown(content="{ project }" key="description")
 
+  comments-list(base-path="/projects/{ project.id }/comments" count="{ project.commentsCount }")
+
 spinner(if="{ loading }")

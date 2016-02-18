@@ -8,8 +8,10 @@ defmodule CodecheckSprint.Project do
     field :title, :string
     field :description, :string
     field :stars_count, :integer, default: 0
+    field :comments_count, :integer, default: 0
 
     field :starred, :boolean, virtual: true, default: false
+    field :commented, :boolean, virtual: true, default: false
 
     belongs_to :author, CodecheckSprint.User
     belongs_to :category, CodecheckSprint.Category
@@ -33,6 +35,12 @@ defmodule CodecheckSprint.Project do
     model
     |> cast(params, ~w(stars_count), [])
     |> validate_number(:stars_count, greater_than_or_equal_to: 0)
+  end
+
+  def comment_changeset(model, params \\ :empty) do
+    model
+    |> cast(params, ~w(comments_count), [])
+    |> validate_number(:comments_count, greater_than_or_equal_to: 0)
   end
 
   def for_params(query, params) when is_map(params) do
@@ -68,7 +76,7 @@ defmodule CodecheckSprint.Project do
   end
 
   def ranking_order(query, ranking) when ranking == true or ranking == "true",
-    do: from p in query, order_by: [desc: p.stars_count]
+    do: from p in query, order_by: [desc: p.stars_count, desc: p.comments_count]
   def ranking_order(query, _), do: query
 
   def reverse_order(query, reversed) when reversed == true or reversed == "true",

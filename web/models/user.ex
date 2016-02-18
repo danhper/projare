@@ -8,6 +8,7 @@ defmodule CodecheckSprint.User do
     field :secret_token, :string
 
     has_many :projects, CodecheckSprint.Project, foreign_key: :author_id
+    has_many :comments, CodecheckSprint.Comment, foreign_key: :author_id
 
     has_secure_password
 

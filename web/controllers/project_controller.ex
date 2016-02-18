@@ -6,7 +6,7 @@ defmodule CodecheckSprint.ProjectController do
 
   @resource_actions ~w(show update star unstar delete)a
 
-  plug EnsureAuthenticated when action in ~w(create star unstar delete)a
+  plug EnsureAuthenticated when action in ~w(create update star unstar delete)a
   plug FetchResource, [model: Project] when action in @resource_actions
   plug EnsureAuthorized, [user_key: :author_id] when action in ~w(update delete)a
 
@@ -15,6 +15,7 @@ defmodule CodecheckSprint.ProjectController do
               |> Project.for_params(params)
               |> Repo.paginate(params)
               |> ProjectService.assign_starred(current_user(conn))
+              |> ProjectService.assign_commented(current_user(conn))
     render(conn, "index.json", projects: projects)
   end
 

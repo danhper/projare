@@ -1,0 +1,36 @@
+.comment
+  padding 1em
+  &::after
+    display block
+    content " "
+    width 100%
+    width calc(100% - 1em)
+    border-bottom 1px solid #ccc
+    clear both
+    padding-top 2em
+  position relative
+  .avatar
+    max-height 64px
+    max-width 64px
+    height 64px
+    border-radius 32px
+    float left
+    margin-right 1em
+  .comment-content
+    float left
+    width 70%
+    width calc(100% - 64px - 3.5em)
+    .comment-header
+      .date
+        font-size 0.8em
+        color #888
+    .body
+      padding-top 1em
+      textarea
+        min-height 5em
+    .comment-actions
+      absolute bottom 2em right 0
+      .btn
+        text-align right
+        display block
+        margin 0

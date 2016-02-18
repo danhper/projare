@@ -18,9 +18,16 @@ h1.header { title || 'Projects' }
           i(class="{ project.category.icon }")
           span { project.category.name }
 
-      .stars.with-icon(class="{starred: project.starred}")
-        i.fa.fa-star
-        span { project.starsCount }
+
+      .social
+        .comments.with-icon(class="{commented: project.commented}")
+          i.fa.fa-comment-o(if="{ !project.commented }")
+          i.fa.fa-comment(if="{ project.commented }")
+          span { project.commentsCount }
+        .stars.with-icon(class="{starred: project.starred}")
+          i.fa.fa-star-o(if="{ !project.starred }")
+          i.fa.fa-star(if="{ project.starred }")
+          span { project.starsCount }
   .panel-body
     markdown.small(content="{ project }" key="description" limit="{ 300 }")
 

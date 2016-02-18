@@ -46,13 +46,22 @@ a.ellipsed, span.ellipsed
   border-radius 16px
   margin-right 10px
 
-.stars
+.social
   absolute bottom right
   font-size 0.6em
+  .comments, .stars
+    display inline
+  .stars
+    margin-left 0.5em
+
+.stars, .comments
   vertical-align middle
   i
     vertical-align middle
     margin-right 3px
+  &.commented
+      i
+        color $primary-color
   &.starred
     i
       color $star-color

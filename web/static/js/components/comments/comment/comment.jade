@@ -1,0 +1,20 @@
+.comment.clearfix
+  img.avatar(riot-src="{ opts.comment.author.imageUrl }")
+  .comment-content
+    .comment-header
+      a.author.ellipsed(href="/users/{ opts.comment.author.id }")
+        span.name { opts.comment.author.name }
+      .date { parent.timeAgo(opts.comment.insertedAt) }
+    .body
+      formatted-text(if="{ !editing }" content="{ comment }" key="body")
+      .edit(if="{ editing }")
+        textarea.form-control(name="body" value="{ opts.comment.body }")
+        .edit-actions
+          button.btn.btn-xs.btn-default(onclick="{ stopEditing }") Cancel
+          button.btn.btn-xs.btn-primary(onclick="{ handleSave }" disabled="{ saving }") Save
+    .comment-actions(if="{ currentUser().id === opts.comment.author.id && !editing }")
+      button.btn.btn-xs.btn-default(onclick="{ startEditing }") Edit
+      button.btn.btn-xs.btn-danger(
+        onclick="{ handleDelete }"
+        disabled="{ deleting }"
+      ) Delete

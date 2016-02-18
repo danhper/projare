@@ -1,5 +1,5 @@
 import riot from 'riot'
-import {request, authorizeRequest} from 'utils'
+import {request} from 'utils'
 
 class ProjectService {
   constructor() {

@@ -4,6 +4,7 @@ defmodule CodecheckSprint.ProjectService do
   alias CodecheckSprint.Project
   alias CodecheckSprint.User
   alias CodecheckSprint.Star
+  alias CodecheckSprint.Comment
 
   def assign_starred(%Project{} = project, user) do
     assign_starred([project], user) |> List.first
@@ -17,6 +18,19 @@ defmodule CodecheckSprint.ProjectService do
     end
   end
   def assign_starred(projects, _), do: Enum.map projects, &(%{&1 | starred: false})
+
+  def assign_commented(%Project{} = project, user) do
+    assign_commented([project], user) |> List.first
+  end
+
+  def assign_commented(projects, %User{} = user) do
+    comments = Comment |> Comment.for_user(user) |> Comment.for_projects(projects) |> Repo.all
+    commented_project_ids = Enum.map(comments, &(&1.project_id)) |> Enum.into(MapSet.new)
+    Enum.map projects, fn project ->
+      %{project | commented: MapSet.member?(commented_project_ids, project.id)}
+    end
+  end
+  def assign_commented(projects, _), do: Enum.map projects, &(%{&1 | commented: false})
 
   def star_project(%Project{} = project, %User{} = user) do
     if not is_nil(get_star(project, user)) do
@@ -39,8 +53,8 @@ defmodule CodecheckSprint.ProjectService do
 
   defp add_star(project, user) do
     Repo.transaction fn ->
-      Repo.insert!(%Star{project_id: project.id, user_id: user.id})
-      Repo.update!(star_changeset(project, 1))
+      Repo.insert(%Star{project_id: project.id, user_id: user.id})
+      Repo.update(star_changeset(project, 1))
     end
   end
 

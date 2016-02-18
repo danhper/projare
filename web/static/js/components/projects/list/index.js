@@ -7,10 +7,9 @@ import {notificationManager} from 'utils'
 import {projectService, userService} from 'services'
 
 riot.tag('projects-list', require('./list.jade')(), function (opts) {
-  const end = () => {
-    this.loading = false
-    this.update()
-  }
+  this.mixin('load-entities')
+
+  this.projects = []
 
   this.loadProjects = () => {
     const query = {
@@ -21,17 +20,11 @@ riot.tag('projects-list', require('./list.jade')(), function (opts) {
       reversed: !opts.ranking,
       ranking: opts.ranking
     }
-    this.loading = true
-    return projectService.list(query)
-      .then((res) => this.projects = this.projects.concat(res))
-      .catch(e => this.error = e)
-      .finally(end)
+    return this.loadEntities(projectService, {key: 'projects', query: query})
   }
 
   opts.title.then((title) => {
     this.title = title
     this.update()
   })
-
-  this.projects = []
 })

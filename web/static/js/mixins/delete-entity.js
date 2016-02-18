@@ -1,5 +1,6 @@
 import riot from 'riot'
 
+import Promise from 'bluebird'
 import {notificationManager} from 'utils'
 
 riot.mixin('delete-entity', {
@@ -12,17 +13,19 @@ riot.mixin('delete-entity', {
       return
     }
     const entityName = options.entityName || 'entity'
-    const redirectPath = options.redirectPath || '/'
+    const redirectPath = options.redirectPath
     const confirmMessage = options.confirmMessage ||
       `Do you really want to delete the ${entityName}?`
     if (!options.skipConfirm && !window.confirm(confirmMessage)) {
-      return
+      return Promise.reject('canceled')
     }
     this.startLoading({key: 'deleting'})
     return service.delete(id)
       .then(() => {
         notificationManager.notify(`The ${entityName} has been deleted.`, 'success')
-        riot.route(redirectPath)
+        if (redirectPath) {
+          riot.route(redirectPath)
+        }
       })
       .catch(e => {
         notificationManager.notify(`Failed to delete the ${entityName}`, 'danger')
