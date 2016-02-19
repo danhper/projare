@@ -16,7 +16,7 @@ defmodule CodecheckSprint.Mixfile do
   def application do
     [mod: {CodecheckSprint, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :secure_password]]
+                    :phoenix_ecto, :postgrex, :secure_password, :httpoison]]
   end
 
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -32,7 +32,8 @@ defmodule CodecheckSprint.Mixfile do
      {:secure_random,       "~> 0.2"},
      {:secure_password,     "~> 0.3.0"},
      {:exgravatar,          "~> 2.0.0"},
-     {:cowboy, "~> 1.0"}]
+     {:httpoison,           "~> 0.8.0"},
+     {:cowboy,              "~> 1.0"}]
   end
 
   defp aliases do

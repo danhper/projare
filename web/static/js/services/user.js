@@ -25,10 +25,16 @@ class UserService {
   }
 
   login(user) {
-    return request.post('/api/login', user).end().then(res => {
-      this.currentUser = res
-      return this.currentUser
-    })
+    return request.post('/api/login', user).end().then((user) => this._finalizeLogin(user))
+  }
+
+  facebookLogin(data) {
+    return request.post('/api/login/facebook', data).end().then((user) => this._finalizeLogin(user))
+  }
+
+  _finalizeLogin(user) {
+    this.currentUser = user
+    return this.currentUser
   }
 
   logout() {

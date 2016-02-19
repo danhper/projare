@@ -1,10 +1,12 @@
 import riot from 'riot'
 
-import {userService} from 'services'
+import {userService, facebookService} from 'services'
 import {notificationManager} from 'utils'
 
+import './users-login.styl'
+
 riot.tag('users-login', require('./users-login.jade')(), function (opts) {
-  this.mixin('form')
+  this.mixin('form', 'loading')
 
   this.currentMode = 'login'
   this.changeMode = (e) => {
@@ -27,19 +29,26 @@ riot.tag('users-login', require('./users-login.jade')(), function (opts) {
     }
   }
 
+  const completeLogin = (user) => {
+    notificationManager.notify(`Your are now logged in as ${user.name}`)
+    opts.onLogin && opts.onLogin(user)
+  }
+
+  this.handleFacebookLogin = () => {
+    this.startLoading()
+    facebookService.login()
+      .then(completeLogin)
+      .catch(() => notificationManager.notify('Could not login with Facebook', 'danger'))
+      .finally(() => this.endLoading({update: true}))
+  }
+
   this.processForm = () => {
-    this.loading = true
+    this.startLoading()
     const user = this.fetchValues('name', 'email', 'password')
     this.errors = {}
     userService[this.currentMode](user)
-      .then((user) => {
-        notificationManager.notify(`Your are now logged in as ${user.name}`)
-        opts.onLogin && opts.onLogin(user)
-      })
+      .then(completeLogin)
       .catch(e => this.errors = this.formatErrors(e))
-      .finally(() => {
-        this.loading = false
-        this.update()
-      })
+      .finally(() => this.endLoading({update: true}))
   }
 })

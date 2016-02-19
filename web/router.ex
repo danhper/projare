@@ -14,7 +14,8 @@ defmodule CodecheckSprint.Router do
     pipe_through :api
 
     post "/login", UserController, :login
-    resources "/users", UserController, only: ~w(index show create update)a
+    post "/login/facebook", UserController, :facebook_login
+    resources "/users", UserController, only: ~w(create)a
     get "/categories", CategoryController, :index
 
     resources "/projects", ProjectController, only: ~w(index show create update delete)a do

@@ -26,6 +26,6 @@ defmodule CodecheckSprint.UserView do
   def render("user.json", %{user: user}) do
     %{id: user.id,
       name: user.name,
-      image_url: Exgravatar.gravatar_url(user.email, s: 256)}
+      image_url: user.image_url || Exgravatar.gravatar_url(user.email, s: 256)}
   end
 end

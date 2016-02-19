@@ -17,3 +17,13 @@ form.form-horizontal(onsubmit="{ processForm }")
           .ripple-container
         button.btn.btn-primary.disabled.spin(type="button" if="{ loading }")
           spinner.inline(size="{ 36 }")
+hr
+
+.facebook-login
+  button.btn.btn-block.btn-facebook.with-icon(
+    onclick="{ handleFacebookLogin }"
+    disabled="{ loading }"
+  )
+    i.icon.fa.fa-facebook
+    span Sign in with Facebook
+    spinner.inline(if="{ loading }" size="{ 30 }" color="#fff")

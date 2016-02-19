@@ -38,7 +38,6 @@ riot.tag('comments-list', require('./list.jade')(), function (opts) {
     this.commentService.save({body: this.body.value})
       .then((comment) => {
         this.count++
-        console.log(this.count)
         this.comments.push(comment)
         this.body.value = ''
       })

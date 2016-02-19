@@ -2,21 +2,22 @@ defmodule CodecheckSprint.UserController do
   use CodecheckSprint.Web, :controller
 
   alias CodecheckSprint.User
+  alias CodecheckSprint.UserService
 
   def login(conn, %{"email" => email, "password" => password}) do
-    if user = User.authenticate(Repo.get_by(User, email: email), password) do
-      render(conn, "show.json", user: user, full: true)
-    else
-      conn |> put_status(:unauthorized) |> render("login_error.json")
-    end
+    user = User.authenticate(Repo.get_by(User, email: email), password)
+    render_login(conn, user)
   end
   def login(conn, _params) do
     send_resp(conn, 400, Poison.encode!(%{"error" => "Please provide your email and password"}))
   end
 
-  def index(conn, _params) do
-    users = Repo.all(User)
-    render(conn, "index.json", users: users)
+  def facebook_login(conn, %{"userID" => user_id, "token" => token}) do
+    user = UserService.facebook_login(user_id, token)
+    render_login(conn, user)
+  end
+  def facebook_login(conn, _params) do
+    send_resp(conn, 400, Poison.encode!(%{"error" => "Incorrect facebook login request"}))
   end
 
   def create(conn, user_params) do
@@ -35,22 +36,10 @@ defmodule CodecheckSprint.UserController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    render(conn, "show.json", user: user)
+  defp render_login(conn, %User{} = user) do
+    render(conn, "show.json", user: user, full: true)
   end
-
-  def update(conn, %{"id" => id} = user_params) do
-    user = Repo.get!(User, id)
-    changeset = User.changeset(user, user_params)
-
-    case Repo.update(changeset) do
-      {:ok, user} ->
-        render(conn, "show.json", user: user)
-      {:error, changeset} ->
-        conn
-        |> put_status(:unprocessable_entity)
-        |> render(CodecheckSprint.ChangesetView, "error.json", changeset: changeset)
-    end
+  defp render_login(conn, _) do
+    conn |> put_status(:unauthorized) |> render("login_error.json")
   end
 end

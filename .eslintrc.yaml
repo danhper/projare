@@ -35,3 +35,4 @@ rules:
 
 globals:
   $: true
+  FB: true
