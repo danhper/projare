@@ -16,7 +16,6 @@
     <!-- vendors CSS using CDN -->
     <%= if Mix.env == :dev do %>
       <link rel="stylesheet" href="<%= static_path(@conn, "/components/bootstrap/dist/css/bootstrap.css") %>">
-      <link rel="stylesheet" href="<%= static_path(@conn, "/components/bootstrap-material-design/dist/css/bootstrap-material-design.css") %>">
       <link rel="stylesheet" href="<%= static_path(@conn, "/components/bootstrap-material-design/dist/css/ripples.css") %>">
       <link rel="stylesheet" href="<%= static_path(@conn, "/components/font-awesome/css/font-awesome.css") %>">
       <link rel="stylesheet" href="<%= static_path(@conn, "/components/devicon/devicon.css") %>">
@@ -24,13 +23,14 @@
 
     <% else %>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/ripples.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
     <% end %>
 
     <link rel="stylesheet" href="<%= static_path(@conn, "/components/dropdown.js/jquery.dropdown.css") %>">
+
+    <link rel="stylesheet" href="<%= static_path(@conn, "/js/theme.css") %>">
 
     <!-- app -->
     <link rel="stylesheet" href="<%= static_path(@conn, "/js/app.css") %>">

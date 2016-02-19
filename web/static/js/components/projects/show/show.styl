@@ -3,8 +3,11 @@
     position relative
     margin-bottom 10px
     .stars
+      font-size 0.5em
       absolute bottom 0 right 30px
       cursor pointer
+      i
+        color $star-color
       &.starred
         background #bbb
       @media screen and (max-width: $sm-max-width)
@@ -14,9 +17,6 @@
         margin 0 auto 0.5em auto
         padding-top 0
         padding-bottom 0
-        font-size 0.6em
-        & > *
-          font-size 0.6em
 
   .discret-links
     a

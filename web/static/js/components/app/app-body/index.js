@@ -15,7 +15,7 @@ riot.tag('app-body', '', '', 'class="container"', function (opts) {
   }
 
   riot.route('', () => {
-    mountTag(this.root, 'projects-list', {title: Promise.resolve('Recent projects')})
+    mountTag(this.root, 'projects-list', {title: Promise.resolve('Recent projects'), top: true})
   })
 
   riot.route('/projects/new', () => {

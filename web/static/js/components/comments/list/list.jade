@@ -16,7 +16,7 @@ spinner(if="{ loading }" size="{ 50 }")
     form.leave-comment.text-center(if="{ isLoggedIn() }" onsubmit="{ handleSave }")
       textarea.form-control(name="body" placeholder="Leave a comment...")
       .submit.text-right
-        input.btn.btn-primary.btn-small(type="submit" value="Save" disabled="{ saving }")
+        input.btn.btn-primary.btn-small(type="submit" value="Post" disabled="{ saving }")
     .please-login.text-center(if="{ !isLoggedIn() }")
       | You must login to post a comment
       

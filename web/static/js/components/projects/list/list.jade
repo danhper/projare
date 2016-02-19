@@ -36,7 +36,8 @@ h1.header { title || 'Projects' }
 
 .no-projects(if="{ !loading && projects.length === 0 }")
   span No projects
+  span(if="{ opts.categoryName && title }") &nbsp; in { title.split(' ')[2] }
   span(if="{ opts.q }") &nbsp; found for search "{ opts.q }"
-  a.back(href="/" if="{ opts.q }") Back to top
+  a.back(href="/" if="{ !opts.top }") Back to top
 
 infinite-scroll(on-infinite="{ loadProjects }" auto-load="{ true }")

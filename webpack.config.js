@@ -9,6 +9,7 @@ var stylusImports = 'import[]=' + path.join(__dirname, './web/static/css/variabl
 module.exports = {
   entry: {
     app: './web/static/js/app.js',
+    theme: './web/static/css/theme.less',
     vendor: [
       'riot',
       'immutable',
@@ -34,6 +35,7 @@ module.exports = {
       {test: /\.jade$/, loader: 'jade'},
       {test: /\.styl$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css!stylus?' + stylusImports)},
+      {test: /\.less$/, loader: ExtractTextPlugin.extract('style-loader', 'css!less')},
       {test: /\.(png|woff|woff2|eot|ttf|svg|gif)/, loader: 'url-loader?limit=10000'},
       {test: /\.jpg/, loader: 'file-loader'}
     ]
