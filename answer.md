@@ -1,4 +1,8 @@
-## [Project API](https://projare.herokuapp.com/)
+## [Projare](https://projare.herokuapp.com/)
+
+https://github.com/tuvistavie/projare
+
+https://projare.herokuapp.com/
 
 ### 作品の説明
 
@@ -15,7 +19,7 @@
   * カテゴリ分け
   * 人気ランキング
   * バリデーションとちゃんとしたエラー処理
-  * プロジェクトでマークダウン仕様
+  * プロジェクトでマークダウン使用可能
 
 
 ### 創意工夫した点
