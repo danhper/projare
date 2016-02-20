@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.ErrorHelpers do
+defmodule Projare.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -26,10 +26,10 @@ defmodule CodecheckSprint.ErrorHelpers do
     #
     #     dngettext "errors", "1 file", "%{count} files", count
     #
-    Gettext.dngettext(CodecheckSprint.Gettext, "errors", msg, msg, opts[:count], opts)
+    Gettext.dngettext(Projare.Gettext, "errors", msg, msg, opts[:count], opts)
   end
 
   def translate_error(msg) do
-    Gettext.dgettext(CodecheckSprint.Gettext, "errors", msg)
+    Gettext.dgettext(Projare.Gettext, "errors", msg)
   end
 end

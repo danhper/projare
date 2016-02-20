@@ -1,10 +1,10 @@
-defmodule CodecheckSprint.ProjectService do
-  use CodecheckSprint.Web, :service
+defmodule Projare.ProjectService do
+  use Projare.Web, :service
 
-  alias CodecheckSprint.Project
-  alias CodecheckSprint.User
-  alias CodecheckSprint.Star
-  alias CodecheckSprint.Comment
+  alias Projare.Project
+  alias Projare.User
+  alias Projare.Star
+  alias Projare.Comment
 
   def assign_starred(%Project{} = project, user) do
     assign_starred([project], user) |> List.first

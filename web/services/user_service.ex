@@ -1,10 +1,10 @@
-defmodule CodecheckSprint.UserService do
-  use CodecheckSprint.Web, :service
+defmodule Projare.UserService do
+  use Projare.Web, :service
 
-  alias CodecheckSprint.User
+  alias Projare.User
 
   def facebook_login(facebook_id, token) do
-    case CodecheckSprint.Facebook.me(token) do
+    case Projare.Facebook.me(token) do
       {:ok, %HTTPoison.Response{status_code: 200, body: %{facebook_id: ^facebook_id} = facebook_info}} ->
         facebook_info |> Map.delete(:token) |> with_picture |> create_or_login_user
       {:ok, %HTTPoison.Response{status_code: 200}} -> {:error, 401, "Bad user id"}

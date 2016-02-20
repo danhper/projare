@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.PageController do
-  use CodecheckSprint.Web, :controller
+defmodule Projare.PageController do
+  use Projare.Web, :controller
 
   def index(conn, params) do
     render(conn, "index.html", params)

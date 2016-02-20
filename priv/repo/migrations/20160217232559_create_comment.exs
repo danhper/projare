@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Repo.Migrations.CreateComment do
+defmodule Projare.Repo.Migrations.CreateComment do
   use Ecto.Migration
 
   def change do

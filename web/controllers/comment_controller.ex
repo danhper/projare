@@ -1,11 +1,11 @@
-defmodule CodecheckSprint.CommentController do
-  use CodecheckSprint.Web, :controller
+defmodule Projare.CommentController do
+  use Projare.Web, :controller
 
   @resource_actions ~w(update delete)a
 
-  alias CodecheckSprint.Comment
-  alias CodecheckSprint.Project
-  alias CodecheckSprint.CommentService
+  alias Projare.Comment
+  alias Projare.Project
+  alias Projare.CommentService
 
   plug EnsureAuthenticated when action in ~w(create update delete)a
   plug FetchResource, [model: Comment] when action in @resource_actions
@@ -47,6 +47,6 @@ defmodule CodecheckSprint.CommentController do
   defp handle_save({:error, changeset}, conn) do
     conn
     |> put_status(:bad_request)
-    |> render(CodecheckSprint.ChangesetView, "error.json", changeset: changeset)
+    |> render(Projare.ChangesetView, "error.json", changeset: changeset)
   end
 end

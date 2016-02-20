@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.ModelCase do
+defmodule Projare.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,18 +16,18 @@ defmodule CodecheckSprint.ModelCase do
 
   using do
     quote do
-      alias CodecheckSprint.Repo
+      alias Projare.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
-      import CodecheckSprint.ModelCase
+      import Projare.ModelCase
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(CodecheckSprint.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Projare.Repo, [])
     end
 
     :ok

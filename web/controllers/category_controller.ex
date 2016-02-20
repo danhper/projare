@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.CategoryController do
-  use CodecheckSprint.Web, :controller
+defmodule Projare.CategoryController do
+  use Projare.Web, :controller
 
-  alias CodecheckSprint.Category
+  alias Projare.Category
 
   def index(conn, _params) do
     categories = Repo.all(Category)

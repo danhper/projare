@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.CommentService do
-  use CodecheckSprint.Web, :service
+defmodule Projare.CommentService do
+  use Projare.Web, :service
 
-  alias CodecheckSprint.Project
+  alias Projare.Project
 
   def create_comment(changeset, project) do
     {:ok, result} = Repo.transaction fn ->

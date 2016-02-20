@@ -1,8 +1,8 @@
-defmodule CodecheckSprint.ProjectController do
-  use CodecheckSprint.Web, :controller
+defmodule Projare.ProjectController do
+  use Projare.Web, :controller
 
-  alias CodecheckSprint.Project
-  alias CodecheckSprint.ProjectService
+  alias Projare.Project
+  alias Projare.ProjectService
 
   @resource_actions ~w(show update star unstar delete)a
 
@@ -64,13 +64,13 @@ defmodule CodecheckSprint.ProjectController do
   defp handle_save({:error, changeset}, conn) do
     conn
     |> put_status(:bad_request)
-    |> render(CodecheckSprint.ChangesetView, "error.json", changeset: changeset)
+    |> render(Projare.ChangesetView, "error.json", changeset: changeset)
   end
 
   defp send_error(conn, status, message) do
     conn
     |> put_status(status)
-    |> render(CodecheckSprint.ErrorView, "error.json", error: message)
+    |> render(Projare.ErrorView, "error.json", error: message)
   end
 
   defp load_project(conn, project) do

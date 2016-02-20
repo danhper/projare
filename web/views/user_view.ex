@@ -1,15 +1,15 @@
-defmodule CodecheckSprint.UserView do
-  use CodecheckSprint.Web, :view
+defmodule Projare.UserView do
+  use Projare.Web, :view
 
   def render("index.json", %{users: users}) do
-    render_many(users, CodecheckSprint.UserView, "user.json")
+    render_many(users, Projare.UserView, "user.json")
   end
 
   def render("show.json", %{user: user} = opts) do
     if opts[:full] do
-      render_one(user, CodecheckSprint.UserView, "full_user.json")
+      render_one(user, Projare.UserView, "full_user.json")
     else
-      render_one(user, CodecheckSprint.UserView, "user.json")
+      render_one(user, Projare.UserView, "user.json")
     end
   end
 

@@ -1,3 +1,3 @@
-defmodule CodecheckSprint.LayoutViewTest do
-  use CodecheckSprint.ConnCase, async: true
+defmodule Projare.LayoutViewTest do
+  use Projare.ConnCase, async: true
 end

@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.CommentTest do
-  use CodecheckSprint.ModelCase
+defmodule Projare.CommentTest do
+  use Projare.ModelCase
 
-  alias CodecheckSprint.Comment
+  alias Projare.Comment
 
   @valid_attrs %{body: "some content"}
   @invalid_attrs %{}

@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Repo.Migrations.CreateCategory do
+defmodule Projare.Repo.Migrations.CreateCategory do
   use Ecto.Migration
 
   def change do

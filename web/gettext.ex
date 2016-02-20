@@ -1,11 +1,11 @@
-defmodule CodecheckSprint.Gettext do
+defmodule Projare.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](http://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import CodecheckSprint.Gettext
+      import Projare.Gettext
 
       # Simple translation
       gettext "Here is the string to translate"
@@ -20,5 +20,5 @@ defmodule CodecheckSprint.Gettext do
 
   See the [Gettext Docs](http://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :codecheck_sprint
+  use Gettext, otp_app: :projare
 end

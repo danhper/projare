@@ -1,8 +1,8 @@
-defmodule CodecheckSprint.Endpoint do
-  use Phoenix.Endpoint, otp_app: :codecheck_sprint
+defmodule Projare.Endpoint do
+  use Phoenix.Endpoint, otp_app: :projare
 
   plug Plug.Static,
-    at: "/", from: :codecheck_sprint, gzip: false,
+    at: "/", from: :projare, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt components)
 
   # Code reloading can be explicitly enabled under the
@@ -26,8 +26,8 @@ defmodule CodecheckSprint.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_codecheck_sprint_key",
+    key: "_projare_sprint_key",
     signing_salt: "3f73Owud"
 
-  plug CodecheckSprint.Router
+  plug Projare.Router
 end

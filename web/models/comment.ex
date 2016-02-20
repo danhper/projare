@@ -1,11 +1,11 @@
-defmodule CodecheckSprint.Comment do
-  use CodecheckSprint.Web, :model
+defmodule Projare.Comment do
+  use Projare.Web, :model
 
   schema "comments" do
     field :body, :string
 
-    belongs_to :author, CodecheckSprint.User
-    belongs_to :project, CodecheckSprint.Project
+    belongs_to :author, Projare.User
+    belongs_to :project, Projare.Project
 
     timestamps
   end

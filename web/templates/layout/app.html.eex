@@ -63,7 +63,7 @@
     <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '<%= Application.get_env(:codecheck_sprint, :facebook)[:api_key] %>',
+          appId      : '<%= Application.get_env(:projare, :facebook)[:api_key] %>',
           xfbml      : true,
           version    : 'v2.5'
         });

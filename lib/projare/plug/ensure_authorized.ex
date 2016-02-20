@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.Plug.EnsureAuthorized do
+defmodule Projare.Plug.EnsureAuthorized do
   @behaviour Plug
 
-  alias CodecheckSprint.Plug.EnsureAuthorized
+  alias Projare.Plug.EnsureAuthorized
 
   def init(opts) do
     opts
@@ -13,13 +13,13 @@ defmodule CodecheckSprint.Plug.EnsureAuthorized do
     if opts[:authorized_fn].(conn, opts) do
       conn
     else
-      CodecheckSprint.Plug.halt_with_error(conn, 403, "not authorized")
+      Projare.Plug.halt_with_error(conn, 403, "not authorized")
     end
   end
 
   def authorized?(conn, opts) do
-    resource = CodecheckSprint.Plug.resource(conn)
-    user = CodecheckSprint.Plug.current_user(conn)
+    resource = Projare.Plug.resource(conn)
+    user = Projare.Plug.current_user(conn)
     Map.fetch!(resource, opts[:user_key]) == user.id
   end
 end

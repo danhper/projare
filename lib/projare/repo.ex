@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.Repo do
-  use Ecto.Repo, otp_app: :codecheck_sprint
+defmodule Projare.Repo do
+  use Ecto.Repo, otp_app: :projare
 
   require Ecto.Query
 

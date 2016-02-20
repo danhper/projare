@@ -1,10 +1,10 @@
-defmodule CodecheckSprint.Plug.FetchUser do
+defmodule Projare.Plug.FetchUser do
   @behaviour Plug
 
   import Plug.Conn
 
-  alias CodecheckSprint.Repo
-  alias CodecheckSprint.User
+  alias Projare.Repo
+  alias Projare.User
 
   def init(_opts) do
     []

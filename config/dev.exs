@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :codecheck_sprint, CodecheckSprint.Endpoint,
+config :projare, Projare.Endpoint,
   http: [port: 3000],
   debug_errors: true,
   code_reloader: true,
@@ -9,7 +9,7 @@ config :codecheck_sprint, CodecheckSprint.Endpoint,
     {Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}
   ]
 
-config :codecheck_sprint, CodecheckSprint.Endpoint,
+config :projare, Projare.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -23,10 +23,10 @@ config :logger, :console, format: "[$level] $message\n"
 
 config :phoenix, :stacktrace_depth, 20
 
-config :codecheck_sprint, CodecheckSprint.Repo,
+config :projare, Projare.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "codecheck_sprint_dev",
+  database: "projare_dev",
   hostname: "localhost",
   pool_size: 10

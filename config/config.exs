@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :codecheck_sprint, CodecheckSprint.Endpoint,
+config :projare, Projare.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "74xnnv0h0RyF61d3mvROlhDZLN5IUojiI9THbWpFvR1Uu8t9zy6BIE89av8+xaoD",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: CodecheckSprint.PubSub,
+  pubsub: [name: Projare.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -19,7 +19,7 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :codecheck_sprint, :facebook,
+config :projare, :facebook,
   api_key: "1524716981165924"
 
 # Import environment specific config. This must remain at the bottom

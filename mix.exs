@@ -1,8 +1,8 @@
-defmodule CodecheckSprint.Mixfile do
+defmodule Projare.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :codecheck_sprint,
+    [app: :projare,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -14,7 +14,7 @@ defmodule CodecheckSprint.Mixfile do
   end
 
   def application do
-    [mod: {CodecheckSprint, []},
+    [mod: {Projare, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex, :secure_password, :httpoison]]
   end

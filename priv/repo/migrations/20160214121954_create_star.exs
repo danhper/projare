@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Repo.Migrations.CreateStar do
+defmodule Projare.Repo.Migrations.CreateStar do
   use Ecto.Migration
 
   def change do

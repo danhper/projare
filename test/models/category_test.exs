@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.CategoryTest do
-  use CodecheckSprint.ModelCase
+defmodule Projare.CategoryTest do
+  use Projare.ModelCase
 
-  alias CodecheckSprint.Category
+  alias Projare.Category
 
   @valid_attrs %{name: "some content", normalized_name: "some content"}
   @invalid_attrs %{}

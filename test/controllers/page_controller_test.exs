@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.PageControllerTest do
-  use CodecheckSprint.ConnCase
+defmodule Projare.PageControllerTest do
+  use Projare.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

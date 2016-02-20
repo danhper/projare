@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.Category do
-  use CodecheckSprint.Web, :model
+defmodule Projare.Category do
+  use Projare.Web, :model
 
   schema "categories" do
     field :name, :string

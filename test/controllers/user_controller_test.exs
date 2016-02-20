@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.UserControllerTest do
-  use CodecheckSprint.ConnCase
+defmodule Projare.UserControllerTest do
+  use Projare.ConnCase
 
-  alias CodecheckSprint.User
+  alias Projare.User
   @valid_attrs %{email: "some content", name: "some content", password_digest: "some content"}
   @invalid_attrs %{}
 

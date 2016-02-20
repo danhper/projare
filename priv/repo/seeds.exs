@@ -1,5 +1,5 @@
-alias CodecheckSprint.Repo
-alias CodecheckSprint.Category
+alias Projare.Repo
+alias Projare.Category
 
 categories = [%{name: "JavaScript", normalized_name: "javascript", icon: "devicon-javascript-plain"},
               %{name: "PHP", normalized_name: "php", icon: "devicon-php-plain"},

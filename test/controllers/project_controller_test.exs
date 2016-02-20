@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.ProjectControllerTest do
-  use CodecheckSprint.ConnCase
+defmodule Projare.ProjectControllerTest do
+  use Projare.ConnCase
 
-  alias CodecheckSprint.Project
+  alias Projare.Project
   @valid_attrs %{created_at: "2010-04-17 14:00:00", description: "some content", title: "some content", url: "some content"}
   @invalid_attrs %{}
 

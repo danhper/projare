@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.Router do
-  use CodecheckSprint.Web, :router
+defmodule Projare.Router do
+  use Projare.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -7,10 +7,10 @@ defmodule CodecheckSprint.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug CodecheckSprint.Plug.FetchUser
+    plug Projare.Plug.FetchUser
   end
 
-  scope "/api", CodecheckSprint do
+  scope "/api", Projare do
     pipe_through :api
 
     post "/login", UserController, :login
@@ -25,7 +25,7 @@ defmodule CodecheckSprint.Router do
     delete "/projects/:id/star", ProjectController, :unstar
   end
 
-  scope "/", CodecheckSprint do
+  scope "/", Projare do
     pipe_through :browser
 
     get "/*path", PageController, :index

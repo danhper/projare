@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.Project do
-  use CodecheckSprint.Web, :model
+defmodule Projare.Project do
+  use Projare.Web, :model
 
   @url_regex ~r"^(https?://)?([\da-z\.-]+)\.([a-z\.]{2,6})([/\w \.-]*)*/?$"
 
@@ -13,8 +13,8 @@ defmodule CodecheckSprint.Project do
     field :starred, :boolean, virtual: true, default: false
     field :commented, :boolean, virtual: true, default: false
 
-    belongs_to :author, CodecheckSprint.User
-    belongs_to :category, CodecheckSprint.Category
+    belongs_to :author, Projare.User
+    belongs_to :category, Projare.Category
 
     timestamps inserted_at: :created_at, updated_at: false
   end

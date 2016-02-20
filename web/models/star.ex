@@ -1,9 +1,9 @@
-defmodule CodecheckSprint.Star do
-  use CodecheckSprint.Web, :model
+defmodule Projare.Star do
+  use Projare.Web, :model
 
   schema "stars" do
-    belongs_to :user, CodecheckSprint.User
-    belongs_to :project, CodecheckSprint.Project
+    belongs_to :user, Projare.User
+    belongs_to :project, Projare.Project
 
     timestamps
   end

@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.ErrorView do
-  use CodecheckSprint.Web, :view
+defmodule Projare.ErrorView do
+  use Projare.Web, :view
 
   def render("error.json", %{error: error}) do
     %{error: error}

@@ -1,3 +1,3 @@
-defmodule CodecheckSprint.LayoutView do
-  use CodecheckSprint.Web, :view
+defmodule Projare.LayoutView do
+  use Projare.Web, :view
 end

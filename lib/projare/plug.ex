@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Plug do
+defmodule Projare.Plug do
   import Plug.Conn
 
   def signed_in?(conn) do

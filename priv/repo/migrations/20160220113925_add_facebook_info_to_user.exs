@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Repo.Migrations.AddFacebookInfoToUser do
+defmodule Projare.Repo.Migrations.AddFacebookInfoToUser do
   use Ecto.Migration
 
   def change do

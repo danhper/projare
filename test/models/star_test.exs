@@ -1,7 +1,7 @@
-defmodule CodecheckSprint.StarTest do
-  use CodecheckSprint.ModelCase
+defmodule Projare.StarTest do
+  use Projare.ModelCase
 
-  alias CodecheckSprint.Star
+  alias Projare.Star
 
   @valid_attrs %{}
   @invalid_attrs %{}

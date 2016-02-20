@@ -1,8 +1,8 @@
-defmodule CodecheckSprint.UserController do
-  use CodecheckSprint.Web, :controller
+defmodule Projare.UserController do
+  use Projare.Web, :controller
 
-  alias CodecheckSprint.User
-  alias CodecheckSprint.UserService
+  alias Projare.User
+  alias Projare.UserService
 
   def login(conn, %{"email" => email, "password" => password}) do
     user = User.authenticate(Repo.get_by(User, email: email), password)
@@ -32,7 +32,7 @@ defmodule CodecheckSprint.UserController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(CodecheckSprint.ChangesetView, "error.json", changeset: changeset)
+        |> render(Projare.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

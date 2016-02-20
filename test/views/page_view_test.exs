@@ -1,3 +1,3 @@
-defmodule CodecheckSprint.PageViewTest do
-  use CodecheckSprint.ConnCase, async: true
+defmodule Projare.PageViewTest do
+  use Projare.ConnCase, async: true
 end

@@ -1,11 +1,11 @@
-defmodule CodecheckSprint.ChangesetView do
-  use CodecheckSprint.Web, :view
+defmodule Projare.ChangesetView do
+  use Projare.Web, :view
 
   @doc """
   Traverses and translates changeset errors.
 
   See `Ecto.Changeset.traverse_errors/2` and
-  `CodecheckSprint.ErrorHelpers.translate_error/1` for more details.
+  `Projare.ErrorHelpers.translate_error/1` for more details.
   """
   def translate_errors(changeset) do
     Ecto.Changeset.traverse_errors(changeset, &translate_error/1)

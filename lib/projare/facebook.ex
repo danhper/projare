@@ -1,4 +1,4 @@
-defmodule CodecheckSprint.Facebook do
+defmodule Projare.Facebook do
   use HTTPoison.Base
 
   @default_fields ~w(name email)

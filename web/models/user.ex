@@ -1,5 +1,5 @@
-defmodule CodecheckSprint.User do
-  use CodecheckSprint.Web, :model
+defmodule Projare.User do
+  use Projare.Web, :model
   use SecurePassword
 
   schema "users" do
@@ -9,8 +9,8 @@ defmodule CodecheckSprint.User do
     field :facebook_id, :string
     field :image_url, :string
 
-    has_many :projects, CodecheckSprint.Project, foreign_key: :author_id
-    has_many :comments, CodecheckSprint.Comment, foreign_key: :author_id
+    has_many :projects, Projare.Project, foreign_key: :author_id
+    has_many :comments, Projare.Comment, foreign_key: :author_id
 
     has_secure_password
 

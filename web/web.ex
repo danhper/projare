@@ -1,12 +1,12 @@
-defmodule CodecheckSprint.Web do
+defmodule Projare.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use CodecheckSprint.Web, :controller
-      use CodecheckSprint.Web, :view
+      use Projare.Web, :controller
+      use Projare.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -30,24 +30,24 @@ defmodule CodecheckSprint.Web do
     quote do
       use Phoenix.Controller
 
-      import CodecheckSprint.Plug
+      import Projare.Plug
 
-      alias CodecheckSprint.Repo
+      alias Projare.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import CodecheckSprint.Router.Helpers
-      import CodecheckSprint.Gettext
+      import Projare.Router.Helpers
+      import Projare.Gettext
 
-      alias CodecheckSprint.Plug.FetchResource
-      alias CodecheckSprint.Plug.EnsureAuthenticated
-      alias CodecheckSprint.Plug.EnsureAuthorized
+      alias Projare.Plug.FetchResource
+      alias Projare.Plug.EnsureAuthenticated
+      alias Projare.Plug.EnsureAuthorized
     end
   end
 
   def service do
     quote do
-      alias CodecheckSprint.Repo
+      alias Projare.Repo
     end
   end
 
@@ -62,9 +62,9 @@ defmodule CodecheckSprint.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import CodecheckSprint.Router.Helpers
-      import CodecheckSprint.ErrorHelpers
-      import CodecheckSprint.Gettext
+      import Projare.Router.Helpers
+      import Projare.ErrorHelpers
+      import Projare.Gettext
     end
   end
 
@@ -78,10 +78,10 @@ defmodule CodecheckSprint.Web do
     quote do
       use Phoenix.Channel
 
-      alias CodecheckSprint.Repo
+      alias Projare.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
-      import CodecheckSprint.Gettext
+      import Projare.Gettext
     end
   end
 
