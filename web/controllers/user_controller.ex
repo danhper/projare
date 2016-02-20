@@ -4,6 +4,8 @@ defmodule Projare.UserController do
   alias Projare.User
   alias Projare.UserService
 
+  plug FetchResource, [model: User] when action in ~w(show)a
+
   def login(conn, %{"email" => email, "password" => password}) do
     user = User.authenticate(Repo.get_by(User, email: email), password)
     render_login(conn, user)
@@ -18,6 +20,10 @@ defmodule Projare.UserController do
   end
   def facebook_login(conn, _params) do
     send_resp(conn, 400, Poison.encode!(%{"error" => "Incorrect facebook login request"}))
+  end
+
+  def show(conn, _params) do
+    render(conn, "show.json", user: resource(conn))
   end
 
   def create(conn, user_params) do

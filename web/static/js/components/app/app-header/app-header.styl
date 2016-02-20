@@ -6,6 +6,36 @@ app-header
       padding 0 10px
       line-height 60px
       vertical-align middle
+      @media screen and (max-width: $lg-max-width)
+        line-height 50px
 
     .dropdown-menu
       min-width 200px
+
+
+  // FIXME: better use less to import bootstrap
+  @media screen and (max-width: $md-max-width)
+    .navbar-header
+      float: none
+    .navbar-toggle
+      display: block
+    .navbar-collapse
+      border-top 1px solid transparent;
+      box-shadow inset 0 1px 0 rgba(255, 255, 255, 0.1)
+    .navbar-collapse.collapse
+      display none !important
+    .navbar-nav
+      float none !important
+      margin 7.5px -15px
+    .navbar-inav > li
+      float none
+    .navbar-nav > li > a
+      padding-top 10px
+      padding-bottom 10px
+    .navbar-text
+      float none
+      margin 15px 0
+    .navbar-collapse.collapse.in
+      display block !important
+    .collapsing
+      overflow hidden !important

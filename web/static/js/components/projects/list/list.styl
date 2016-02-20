@@ -8,8 +8,17 @@
     .author
       max-width 100%
       display inline-block
+      vertical-align bottom
       margin-left 10px
       font-size 0.7em
+      & > *
+        vertical-align bottom
+      .avatar
+        max-height 24px
+        border-radius 12px
+        margin-right 5px
+        & + span
+          vertical-align bottom
       @media screen and (max-width: $sm-max-width)
         display block
     .category
@@ -18,6 +27,7 @@
       padding 2px
       font-size 0.5em
       border-radius 10px
+      vertical-align bottom
       i
         margin 0 5px
 

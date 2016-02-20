@@ -67,7 +67,10 @@ riot.tag('app-body', '', '', 'class="container"', function (opts) {
     mountTag(this.root, 'projects-list', {
       authorID: id,
       title: userService.get(id)
-        .then((user) => `Projects by ${user.name}`)
+        .then((user) => {
+          console.log(user)
+          return `Projects by ${user.name}`
+        })
         .catch(errorAndRedirect('Could not find user'))
     })
   })

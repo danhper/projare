@@ -5,10 +5,13 @@ h1.header { title || 'Projects' }
     h1.panel-title
       a.title.ellipsed(href="/projects/{ project.id }") { project.title }
       .author
-        | by&nbsp;
-        span.ellipsed(if="{ parent.opts.authorID }") { project.author.name }
+        span by&nbsp;
+        span.ellipsed(if="{ parent.opts.authorID }")
+          img.avatar(src="{ project.author.imageUrl }")
+          span { project.author.name }
         a.ellipsed(if="{ !parent.opts.authorID }" href="/users/{ project.author.id }")
-          | { project.author.name }
+          img.avatar(src="{ project.author.imageUrl }")
+          span { project.author.name }
       .category
         | in
         span.with-icon(if="{ parent.opts.categoryName }")

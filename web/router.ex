@@ -15,7 +15,7 @@ defmodule Projare.Router do
 
     post "/login", UserController, :login
     post "/login/facebook", UserController, :facebook_login
-    resources "/users", UserController, only: ~w(create)a
+    resources "/users", UserController, only: ~w(create show)a
     get "/categories", CategoryController, :index
 
     resources "/projects", ProjectController, only: ~w(index show create update delete)a do
