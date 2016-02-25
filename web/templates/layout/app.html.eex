@@ -65,7 +65,8 @@
         FB.init({
           appId      : '<%= Application.get_env(:projare, :facebook)[:api_key] %>',
           xfbml      : true,
-          version    : 'v2.5'
+          version    : 'v2.5',
+          status     : true
         });
       };
       (function(d, s, id){
